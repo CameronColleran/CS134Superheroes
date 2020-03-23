@@ -192,18 +192,35 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < mButtons.length; i++)
         {
             mButtons[i].setEnabled(true);
+            int randIndex;
 
+            // Purpose of do while loops is to prevent duplicate buttons (correct answer be randomly chosen again)
             if (mQuizType.equals("Superhero Name"))
             {
-                mButtons[i].setText(allHeroesList.get(i).getName());
+                do
+                {
+                    randIndex = rng.nextInt(allHeroesList.size());
+                    mButtons[i].setText(allHeroesList.get(randIndex).getName());
+                }
+                while (allHeroesList.get(randIndex).getName().equals(correctAttribute));
             }
             else if (mQuizType.equals("Superpower"))
             {
-                mButtons[i].setText(allHeroesList.get(i).getSuperpower());
+                do
+                {
+                    randIndex = rng.nextInt(allHeroesList.size());
+                    mButtons[i].setText(allHeroesList.get(randIndex).getSuperpower());
+                }
+                while (allHeroesList.get(randIndex).getSuperpower().equals(correctAttribute));
             }
             else
             {
-                mButtons[i].setText(allHeroesList.get(i).getOneThing());
+                do
+                {
+                    randIndex = rng.nextInt(allHeroesList.size());
+                    mButtons[i].setText(allHeroesList.get(randIndex).getOneThing());
+                }
+                while (allHeroesList.get(randIndex).getOneThing().equals(correctAttribute));
             }
 
         }
